@@ -12,7 +12,9 @@ router.get('/discussion', async function (req, res) {
   let filter = '';
 
   if (req.query.author) {
-    filter = `WHERE author = "${req.query.author}"`; 
+    filter = `WHERE author = "${req.query.author}"`; // Indula"; DROP TABLE comments; SELECT * FROM comments WHERE author = "Janith
+    // If we insert this query inside the find comments by author search bar, the table will be dropped.
+    // This is how the attackers perform SQL injection attacks.
   }
 
   const query = `SELECT * FROM comments ${filter}`;
